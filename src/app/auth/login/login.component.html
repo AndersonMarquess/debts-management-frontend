@@ -1,0 +1,36 @@
+<div class="vertical-center">
+
+	<h2 class="mat-title">Login</h2>
+
+	<form [formGroup]="loginForm" (submit)="handleSubmit()" fxLayout="column" fxLayoutAlign="space-around center">
+
+		<!-- Input de e-mail -->
+		<mat-form-field appearance="outline">
+			<mat-label>E-mail</mat-label>
+			<input matInput placeholder="conta@email.com" formControlName="email">
+			<mat-icon matSuffix>email</mat-icon>
+
+			<!-- Validação -->
+			<mat-error *ngIf="loginForm.get('email').errors?.email">Informe um e-mail válido</mat-error>
+			<mat-error *ngIf="loginForm.get('email').errors?.required">Este campo é obrigatório</mat-error>
+		</mat-form-field>
+
+		<!-- Input de senha -->
+		<mat-form-field appearance="outline">
+			<mat-label>Password</mat-label>
+			<input matInput [type]="hide ? 'text' : 'password'" formControlName="password">
+			<button mat-icon-button matSuffix (click)="hide = !hide">
+				<mat-icon>{{hide ? 'visibility' : 'visibility_off'}}</mat-icon>
+			</button>
+
+			<!-- Validação -->
+			<mat-error *ngIf="loginForm.get('password').errors?.required">Este campo é obrigatório</mat-error>
+		</mat-form-field>
+
+		<!-- Botão de login -->
+		<button mat-button color="primary" [disabled]="loginForm.invalid" type="submit">Login</button>
+
+		<!-- Botão de criar conta -->
+		<a mat-button color="link">Create account</a>
+	</form>
+</div>
