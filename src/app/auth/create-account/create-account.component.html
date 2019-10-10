@@ -59,10 +59,13 @@
 			diferentes</mat-error>
 
 		<!-- Botão de Create -->
-		<button class="submit-form" mat-button color="primary" [disabled]="createAccountForm.invalid"
+		<button class="submit-form" mat-stroked-button color="primary" [disabled]="createAccountForm.invalid"
 			type="submit">Create</button>
+		
+		<p class="mat-body" fxLayoutAlign="center">ou</p>
 
 		<!-- Botão de criar conta -->
-		<a class="navigator-form" mat-button color="link">Login</a>
+		<a routerLink="/" class="navigator-form" mat-stroked-button color="link">Login</a>
+
 	</form>
 </div>

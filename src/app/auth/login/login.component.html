@@ -28,10 +28,12 @@
 		</mat-form-field>
 
 		<!-- Botão de login -->
-		<button class="submit-form" mat-button color="primary" [disabled]="loginForm.invalid"
+		<button class="submit-form" mat-stroked-button color="primary" [disabled]="loginForm.invalid"
 			type="submit">Login</button>
-
+		
+		<p class="mat-body" fxLayoutAlign="center">ou</p>
+		
 		<!-- Botão de criar conta -->
-		<a class="navigator-form" mat-button color="link">Create account</a>
+		<a routerLink="/create-account" class="navigator-form" mat-stroked-button color="link">Create account</a>
 	</form>
 </div>

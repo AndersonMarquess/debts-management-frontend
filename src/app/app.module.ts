@@ -4,6 +4,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { AuthModule } from './auth/auth.module';
+import { SharedComponentsModule } from './shared-components/shared-components.module';
 
 
 @NgModule({
@@ -14,7 +15,8 @@ import { AuthModule } from './auth/auth.module';
 		BrowserModule,
 		AppRoutingModule,
 		BrowserAnimationsModule,
-		AuthModule
+		AuthModule,
+		SharedComponentsModule
 	],
 	providers: [],
 	bootstrap: [AppComponent]
