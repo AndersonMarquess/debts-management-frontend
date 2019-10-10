@@ -2,3 +2,33 @@
 
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+.vertical-center {
+	height: 100%;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+}
+
+.ca-form, .login-form {
+	max-width: 600px;
+	width: 75%;
+	display: flex;
+	flex-direction: column;
+}
+
+.ca-form > mat-form-field, .login-form > mat-form-field {
+	width: 100%;
+	margin-bottom: 16px;
+}
+
+.ca-form > .submit-form, .login-form > .submit-form {
+	width: 130px;
+	margin: 0 auto;
+}
+
+.ca-form > .navigator-form, .login-form > .navigator-form {
+	width: 130px;
+	margin: 20px auto;
+}

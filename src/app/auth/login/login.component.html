@@ -2,7 +2,7 @@
 
 	<h2 class="mat-title">Login</h2>
 
-	<form [formGroup]="loginForm" (submit)="handleSubmit()" fxLayout="column" fxLayoutAlign="space-around center">
+	<form class="login-form" [formGroup]="loginForm" (ngSubmit)="handleSubmit()">
 
 		<!-- Input de e-mail -->
 		<mat-form-field appearance="outline">
@@ -19,7 +19,7 @@
 		<mat-form-field appearance="outline">
 			<mat-label>Password</mat-label>
 			<input matInput [type]="hide ? 'text' : 'password'" formControlName="password">
-			<button mat-icon-button matSuffix (click)="hide = !hide">
+			<button type="button" mat-icon-button matSuffix (click)="hide = !hide">
 				<mat-icon>{{hide ? 'visibility' : 'visibility_off'}}</mat-icon>
 			</button>
 
@@ -28,9 +28,10 @@
 		</mat-form-field>
 
 		<!-- Botão de login -->
-		<button mat-button color="primary" [disabled]="loginForm.invalid" type="submit">Login</button>
+		<button class="submit-form" mat-button color="primary" [disabled]="loginForm.invalid"
+			type="submit">Login</button>
 
 		<!-- Botão de criar conta -->
-		<a mat-button color="link">Create account</a>
+		<a class="navigator-form" mat-button color="link">Create account</a>
 	</form>
 </div>

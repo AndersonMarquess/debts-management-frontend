@@ -4,10 +4,14 @@ import { NgModule } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MaterialModule } from '../material/material.module';
 import { AuthService } from './auth.service';
+import { CreateAccountComponent } from './create-account/create-account.component';
 import { LoginComponent } from './login/login.component';
 
 @NgModule({
-	declarations: [LoginComponent],
+	declarations: [
+		CreateAccountComponent,
+		LoginComponent
+	],
 	imports: [
 		CommonModule,
 		HttpClientModule,
@@ -15,6 +19,9 @@ import { LoginComponent } from './login/login.component';
 		ReactiveFormsModule
 	],
 	providers: [AuthService],
-	exports: [LoginComponent]
+	exports: [
+		CreateAccountComponent,
+		LoginComponent
+	]
 })
 export class AuthModule { }
