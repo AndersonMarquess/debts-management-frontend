@@ -1,0 +1,63 @@
+<div class="vertical-center">
+	<h2 class="mat-title">Listagem de dívidas</h2>
+
+	<div class="all-debts">
+
+		<mat-card class="debt-card" *ngFor="let debt of debts">
+			<mat-card-header class="debt-header">
+				<div mat-card-avatar>
+					<mat-icon>receipt</mat-icon>
+				</div>
+				<mat-card-title class="description">{{debt.description}}</mat-card-title>
+				<mat-card-subtitle></mat-card-subtitle>
+			</mat-card-header>
+
+			<mat-card-content class="debt-details">
+				<mat-divider></mat-divider>
+				<div class="debt-amount">
+					<p>{{debt.amount | currency: 'BRL' }}</p>
+				</div>
+				<mat-divider></mat-divider>
+				<div class="debt-installment">
+					<mat-icon class="icon">trending_up</mat-icon>
+					<span>Prestações: </span>
+					<p>{{debt.installment}} de {{debt.totalInstallment}}</p>
+				</div>
+				<div class="debt-due-date">
+					<mat-icon class="icon">date_range</mat-icon>
+					<span>Vencimento: </span>
+					<p>{{debt.dueDate | date: 'dd/MM/yy' }}</p>
+				</div>
+				<div class="debt-total-amount">
+					<mat-icon class="icon">attach_money</mat-icon>
+					<span>Total: </span>
+					<p>{{debt.totalAmount | currency: 'BRL' }}</p>
+				</div>
+			</mat-card-content>
+
+			<mat-divider></mat-divider>
+
+			<mat-card-actions class="debt-footer">
+				<button mat-icon-button>
+					<mat-icon>delete</mat-icon>
+				</button>
+				<button mat-icon-button>
+					<mat-icon>edit</mat-icon>
+				</button>
+				<button mat-stroked-button color="primary">Pagar</button>
+			</mat-card-actions>
+		</mat-card>
+	</div>
+
+	<div class="balance">
+		<p class="mat-body">
+			Com base nas dívidas anteriores, o valor total a ser pago neste mês é:
+			{{ totalAmountInThisMonth | currency : 'BRL' }}
+		</p>
+	</div>
+
+	<button mat-stroked-button color="primary" *ngIf="!isLastPage; else fim" (click)="getDebts()">Carregar mais</button>
+	<ng-template #fim>
+		<p class="mat-small">Fim da listagem</p>
+	</ng-template>
+</div>

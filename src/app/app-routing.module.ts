@@ -1,13 +1,15 @@
 import { NgModule } from '@angular/core';
-import { Routes, RouterModule } from '@angular/router';
-import { LoginComponent } from './auth/login/login.component';
+import { RouterModule, Routes } from '@angular/router';
 import { CreateAccountComponent } from './auth/create-account/create-account.component';
+import { LoginComponent } from './auth/login/login.component';
+import { DebtListComponent } from './debt/debt-list/debt-list.component';
 import { NotFoundComponent } from './shared-components/not-found/not-found.component';
 
 
 const routes: Routes = [
 	{ path: '', component: LoginComponent },
 	{ path: 'create-account', component: CreateAccountComponent },
+	{ path: 'debts/all', component: DebtListComponent },
 	{ path: '**', component: NotFoundComponent }
 ];
 

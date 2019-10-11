@@ -1,0 +1,69 @@
+.all-debts {
+	width: 85%;
+	min-width: 300px;
+    justify-content: center;
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+}
+
+.all-debts > .debt-card {
+	width: 250px;
+	margin: 12px;
+}
+
+.all-debts .debt-header {
+    align-items: center;
+    height: 60px;
+}
+
+.all-debts .debt-header .mat-card-avatar {
+	margin: auto 0;
+	width: 24px;
+	padding-top: 5px;
+}
+
+.debt-header .description {
+	text-transform: lowercase;
+}
+
+.debt-header .description::first-letter {
+	text-transform: capitalize;
+}
+
+.debt-details .icon {
+    position: relative;
+    top: 10px;
+}
+
+.all-debts .debt-details .debt-amount > p {
+	margin: 10px;
+	margin-left: auto;
+	font-size: 32px;
+	width: 136px;
+}
+
+.all-debts .debt-details p {
+	width: 100px;
+	text-align: end;
+}
+
+.debt-details .debt-amount, .debt-details .debt-installment, 
+.debt-details .debt-due-date, .debt-details .debt-total-amount {
+	display: flex;
+	justify-content: space-between;
+}
+
+.debt-installment > span, .debt-total-amount > span, .debt-due-date > span {
+	margin: 14px 0;
+    position: relative;
+    left: -10px;
+    width: 80px;
+}
+
+/*  footer */
+.debt-footer {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-around;
+}

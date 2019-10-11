@@ -1,27 +1,23 @@
 import { NgModule } from '@angular/core';
 import { FlexLayoutModule } from '@angular/flex-layout';
-import { MatButtonModule, MatGridListModule, MatIconModule, MatInputModule } from "@angular/material";
+import { MatButtonModule, MatCardModule, MatDividerModule, MatGridListModule, MatIconModule, MatInputModule, MatProgressBarModule } from "@angular/material";
 import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatPaginatorModule } from '@angular/material/paginator';
 
 
-const MaterialComponents = [
-	MatButtonModule,
-	MatFormFieldModule,
-	MatIconModule,
-	MatInputModule,
-	MatGridListModule,
-	FlexLayoutModule
-];
 
 @NgModule({
-	imports: [
+	exports: [
 		MatButtonModule,
 		MatFormFieldModule,
 		MatIconModule,
 		MatInputModule,
 		MatGridListModule,
-		FlexLayoutModule
-	],
-	exports: [MaterialComponents]
+		FlexLayoutModule,
+		MatCardModule,
+		MatDividerModule,
+		MatProgressBarModule,
+		MatPaginatorModule
+	]
 })
 export class MaterialModule { }
