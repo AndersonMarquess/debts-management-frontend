@@ -21,7 +21,7 @@
 				<div class="debt-installment">
 					<mat-icon class="icon">trending_up</mat-icon>
 					<span>Prestações: </span>
-					<p>{{debt.installment}} de {{debt.totalInstallment}}</p>
+					<p>{{debt.currentInstallment}} de {{debt.totalInstallment}}</p>
 				</div>
 				<div class="debt-due-date">
 					<mat-icon class="icon">date_range</mat-icon>
@@ -29,9 +29,14 @@
 					<p>{{debt.dueDate | date: 'dd/MM/yy' }}</p>
 				</div>
 				<div class="debt-total-amount">
+					<mat-icon class="icon">label</mat-icon>
+					<span>Categoria: </span>
+					<p>{{debt.category }}</p>
+				</div>
+				<div class="debt-total-amount">
 					<mat-icon class="icon">attach_money</mat-icon>
-					<span>Total: </span>
-					<p>{{debt.totalAmount | currency: 'BRL' }}</p>
+					<span>Total restante: </span>
+					<p>{{debt.totalAmountLeft | currency: 'BRL' }}</p>
 				</div>
 			</mat-card-content>
 

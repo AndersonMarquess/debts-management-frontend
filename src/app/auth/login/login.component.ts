@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AccountCredential } from 'src/app/models/account-credentials';
 import { AuthService } from '../auth.service';
+import { Router } from '@angular/router';
 
 @Component({
 	selector: 'dmf-login',
@@ -13,7 +14,8 @@ export class LoginComponent implements OnInit {
 	loginForm: FormGroup;
 	timer;
 
-	constructor(private formBuilder: FormBuilder, private authService: AuthService) { }
+	constructor(private formBuilder: FormBuilder, private authService: AuthService,
+		private router: Router) { }
 
 	ngOnInit(): void {
 		this.loginForm = this.formBuilder.group({
@@ -31,7 +33,7 @@ export class LoginComponent implements OnInit {
 			const credentials = this.loginForm.getRawValue() as AccountCredential;
 			this.authService.authenticate(credentials)
 				.subscribe(
-					() => console.log('sucesso no login'),
+					() => this.router.navigate(['/debts','all']),
 					err => console.log(err.message)
 				);
 		}, 500);

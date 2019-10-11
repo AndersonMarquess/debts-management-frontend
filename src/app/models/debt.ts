@@ -1,10 +1,12 @@
 export interface Debt {
 	id: string,
 	description: string,
+	category: string,
 	amount: number,
-	installment: number,
-	dueDay: number,
+	currentInstallment: number,
+	totalInstallment: number,
 	ownerId: string,
-	totalAmount: number,
-	dueDate: string
+	dueDate: number,
+	totalAmountLeft: number,
+	totalAmount: number
 }
