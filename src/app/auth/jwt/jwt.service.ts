@@ -17,7 +17,7 @@ export class JwtService {
 	}
 
 	hasToken(): boolean {
-		return this.getToken().trim() != null;
+		return this.getToken() != null;
 	}
 
 	getAuthenticatedUserId(): string {
@@ -32,6 +32,14 @@ export class JwtService {
 			return this.decodePayloadFromJwt().sub;
 		}
 		return '';
+	}
+
+	hasValidToken(): boolean {
+		if (this.hasToken()) {
+			const expiration = this.decodePayloadFromJwt().exp
+			return new Date().getTime() < expiration * 1000;
+		}
+		return false;
 	}
 
 	private decodePayloadFromJwt(): PayloadJwt {
