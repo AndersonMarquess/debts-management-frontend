@@ -14,8 +14,7 @@ export class DebtService {
 	findAllPageable(page: number, size: number): Observable<any> {
 		return this.client.get<Debt>(`${ApiBaseUrl}/v1/debts?page=${page}&size=${size}`, {
 			headers: {
-				'userId': this.jwtService.getAuthenticatedUserId(),
-				'Authorization': this.jwtService.getToken()
+				'userId': this.jwtService.getAuthenticatedUserId()
 			}
 		});
 	}
