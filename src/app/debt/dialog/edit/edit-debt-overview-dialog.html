@@ -1,0 +1,52 @@
+<mat-card class="debt-card" mat-dialog-content>
+	<mat-card-header class="debt-header">
+		<div mat-card-avatar>
+			<mat-icon>receipt</mat-icon>
+		</div>
+		<mat-card-title>Editar dívida</mat-card-title>
+	</mat-card-header>
+
+	<mat-divider></mat-divider>
+
+	<mat-card-content class="debt-details">
+		<!-- Descrição -->
+		<mat-form-field class="input-wrapper">
+			<input matInput placeholder="Descrição" [(ngModel)]="data.debt.description" required>
+		</mat-form-field>
+		<!-- Valor -->
+		<mat-form-field class="input-wrapper">
+			<input matInput placeholder="Valor" [(ngModel)]="data.debt.amount" (keyup)="normalizeAmount()"
+				pattern="^[1-9]\d*\.\d{1,2}$" required>
+			<mat-icon matSuffix>attach_money</mat-icon>
+		</mat-form-field>
+		<!-- Prestação atual -->
+		<mat-form-field class="input-wrapper">
+			<input matInput placeholder="Prestação atual" [(ngModel)]="data.debt.currentInstallment" min="1" max="999"
+				type="number" required>
+			<mat-icon matSuffix>trending_up</mat-icon>
+		</mat-form-field>
+		<!-- Prestações totais -->
+		<mat-form-field class="input-wrapper">
+			<input matInput placeholder="Prestações totais" [(ngModel)]="data.debt.totalInstallment"
+				[min]="data.debt.currentInstallment" max="999" type="number" required>
+			<mat-icon matSuffix>trending_up</mat-icon>
+		</mat-form-field>
+		<!-- Vencimento -->
+		<mat-form-field class="input-wrapper">
+			<input matInput placeholder="Vencimento" type="date" [(ngModel)]="data.debt.dueDate">
+			<mat-icon matSuffix>date_range</mat-icon>
+		</mat-form-field>
+		<!-- Categoria -->
+		<mat-form-field class="input-wrapper">
+			<mat-select placeholder="Categoria" [(ngModel)]="data.debt.category">
+				<mat-option [(value)]="category" *ngFor="let category of categories">{{category}}</mat-option>
+			</mat-select>
+			<mat-icon matSuffix>label</mat-icon>
+		</mat-form-field>
+	</mat-card-content>
+</mat-card>
+
+<div mat-dialog-actions>
+	<button mat-button (click)="handleCancel()">Cancelar</button>
+	<button mat-button [mat-dialog-close]="confirmChanges" cdkFocusInitial>Confirmar</button>
+</div>

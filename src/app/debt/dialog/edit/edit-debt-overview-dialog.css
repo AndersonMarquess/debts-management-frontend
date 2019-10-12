@@ -1,0 +1,5 @@
+mat-card-content.debt-details {
+	display: flex;
+	flex-direction: column;
+	padding-top: 12px;
+}

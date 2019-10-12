@@ -3,6 +3,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { Debt } from 'src/app/models/debt';
 import { DebtService } from '../debt.service';
 import { DeleteDebtOverviewDialog } from '../dialog/delete/delete-debt-overview-dialog';
+import { EditDebtOverviewDialog } from '../dialog/edit/edit-debt-overview-dialog';
 
 @Component({
 	templateUrl: './debt-list.component.html',
@@ -59,7 +60,7 @@ export class DebtListComponent implements OnInit {
 		});
 	}
 
-	deleteDebt(debtId: string): void {
+	private deleteDebt(debtId: string): void {
 		this.debtService.deleteById(debtId)
 			.subscribe(
 				() => {
@@ -68,5 +69,47 @@ export class DebtListComponent implements OnInit {
 				},
 				err => console.log(err)
 			);
+	}
+
+	openDialogForEdit(debt: Debt): void {
+		const { description, amount, currentInstallment, totalInstallment, dueDate, category } = debt;
+		const dialogRef = this.dialog.open(EditDebtOverviewDialog, {
+			width: '300px',
+			data: { debt }
+		});
+
+		dialogRef.afterClosed().subscribe(result => {
+			if (result) {
+				this.editDialog(debt);
+				this.calcTotalAmounLeft(debt);
+				this.calcTotalAmountInThisMonth();
+			} else {
+				this.backupDebtData(debt, description, amount, currentInstallment,
+					totalInstallment, dueDate, category);
+			}
+		});
+	}
+
+	private editDialog(debt: Debt): void {
+		this.debtService.update(debt)
+			.subscribe(
+				() => console.log('sucesso na atualização da dívida'),
+				err => console.log(err)
+			);
+	}
+
+	private calcTotalAmounLeft(debt) {
+		const factor = debt.totalInstallment - (debt.currentInstallment - 1);
+		debt.totalAmountLeft = debt.amount * factor;
+	}
+
+	private backupDebtData(debt: Debt, description: string, amount: number, currentInstallment: number,
+		totalInstallment: number, dueDate: number, category: string) {
+		debt.description = description;
+		debt.amount = amount;
+		debt.currentInstallment = currentInstallment;
+		debt.totalInstallment = totalInstallment;
+		debt.dueDate = dueDate;
+		debt.category = category;
 	}
 }
