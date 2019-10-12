@@ -3,13 +3,18 @@ import { RouterModule, Routes } from '@angular/router';
 import { CanActivePageGuard } from './auth/can-active-page.guard';
 import { CreateAccountComponent } from './auth/create-account/create-account.component';
 import { LoginComponent } from './auth/login/login.component';
+import { NotAllowAccessAfterLoginGuard } from './auth/not-allow-access-after-login.guard';
+import { DebtAddComponent } from './debt/debt-add/debt-add.component';
 import { DebtListComponent } from './debt/debt-list/debt-list.component';
 import { NotFoundComponent } from './shared-components/not-found/not-found.component';
-import { DebtAddComponent } from './debt/debt-add/debt-add.component';
 
 
 const routes: Routes = [
-	{ path: '', component: LoginComponent },
+	{
+		path: '',
+		component: LoginComponent,
+		canActivate: [NotAllowAccessAfterLoginGuard]
+	},
 	{ path: 'create-account', component: CreateAccountComponent },
 	{
 		path: 'debts/all',
