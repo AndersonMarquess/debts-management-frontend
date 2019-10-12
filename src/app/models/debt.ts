@@ -1,12 +1,8 @@
-export interface Debt {
+import { NewDebt } from './new-debt';
+
+export interface Debt extends NewDebt{
 	id: string,
-	description: string,
-	category: string,
-	amount: number,
 	currentInstallment: number,
-	totalInstallment: number,
 	ownerId: string,
-	dueDate: number,
-	totalAmountLeft: number,
-	totalAmount: number
+	totalAmountLeft: number
 }

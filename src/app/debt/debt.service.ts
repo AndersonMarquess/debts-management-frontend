@@ -4,6 +4,7 @@ import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { JwtService } from '../auth/jwt/jwt.service';
 import { Debt } from '../models/debt';
+import { NewDebt } from '../models/new-debt';
 
 const ApiBaseUrl = environment.ApiUrl;
 
@@ -17,5 +18,9 @@ export class DebtService {
 				'userId': this.jwtService.getAuthenticatedUserId()
 			}
 		});
+	}
+
+	submitNewDebt(newDebt: NewDebt): Observable<Debt> {
+		return this.client.post<Debt>(`${ApiBaseUrl}/v1/debts`, newDebt);
 	}
 }

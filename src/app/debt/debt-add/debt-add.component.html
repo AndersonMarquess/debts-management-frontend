@@ -1,0 +1,65 @@
+<div class="container">
+
+	<h2 class="mat-title">Nova dívida</h2>
+
+	<form class="form-create-debt" [formGroup]="createDebtForm" (ngSubmit)="handleSubmit()">
+
+		<!-- Input de Descrição -->
+		<mat-form-field appearance="outline">
+			<mat-label>Descrição</mat-label>
+			<input matInput placeholder="Compras do mercado" formControlName="description">
+			<mat-icon matSuffix>account_box</mat-icon>
+
+			<!-- Validação -->
+			<mat-error *ngIf="createDebtForm.get('description').errors?.minlength">Mínimo 3 caracteres</mat-error>
+			<mat-error *ngIf="createDebtForm.get('description').errors?.maxlength">Máximo 60 caracteres</mat-error>
+			<mat-error *ngIf="createDebtForm.get('description').errors?.required">Este campo é obrigatório</mat-error>
+		</mat-form-field>
+
+		<!-- Input de Categoria -->
+		<mat-form-field appearance="outline">
+			<mat-select placeholder="Categoria" formControlName="category">
+				<mat-option [value]="category" *ngFor="let category of categories">{{category}}</mat-option>
+			</mat-select>
+
+			<!-- Validação -->
+			<mat-error *ngIf="createDebtForm.get('category').errors?.required">Este campo é obrigatório</mat-error>
+		</mat-form-field>
+
+		<!-- Input do Valor -->
+		<mat-form-field appearance="outline">
+			<input matInput (keyup)="normalizeAmount()" placeholder="Valor" pattern="^[1-9]\d*\.\d{2}$"
+				formControlName="amount">
+			<mat-icon matSuffix>attach_money</mat-icon>
+
+			<!-- Validação -->
+			<mat-error *ngIf="createDebtForm.get('amount').errors?.required">Este campo é obrigatório</mat-error>
+		</mat-form-field>
+
+		<!-- Input de Prestações -->
+		<mat-form-field appearance="outline">
+			<mat-label>Prestações</mat-label>
+			<input matInput type="number" formControlName="totalInstallment" step="1">
+
+			<!-- Validação -->
+			<mat-error *ngIf="createDebtForm.get('totalInstallment').errors?.required">
+				Este campo é obrigatório
+			</mat-error>
+			<mat-error *ngIf="createDebtForm.get('totalInstallment').errors?.min">Mínimo de 1 prestação</mat-error>
+			<mat-error *ngIf="createDebtForm.get('totalInstallment').errors?.max">Máximo de 999 prestações</mat-error>
+		</mat-form-field>
+
+		<!-- Input de Vencimento -->
+		<mat-form-field appearance="outline">
+			<input matInput type="date" formControlName="dueDate" />
+
+			<!-- Validação -->
+			<mat-error *ngIf="createDebtForm.get('dueDate').errors?.required">Este campo é obrigatório
+			</mat-error>
+		</mat-form-field>
+
+		<!-- Botão de criar -->
+		<button class="submit-form" mat-stroked-button color="primary" [disabled]="createDebtForm.invalid"
+			type="submit">Adicionar</button>
+	</form>
+</div>

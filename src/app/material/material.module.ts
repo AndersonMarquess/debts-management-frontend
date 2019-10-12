@@ -1,6 +1,16 @@
 import { NgModule } from '@angular/core';
 import { FlexLayoutModule } from '@angular/flex-layout';
-import { MatButtonModule, MatCardModule, MatDividerModule, MatGridListModule, MatIconModule, MatInputModule, MatProgressBarModule } from "@angular/material";
+import {
+	MatButtonModule,
+	MatCardModule,
+	MatDividerModule,
+	MatGridListModule,
+	MatIconModule,
+	MatInputModule,
+	MatOptionModule,
+	MatProgressBarModule,
+	MatSelectModule
+} from "@angular/material";
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatPaginatorModule } from '@angular/material/paginator';
 
@@ -17,7 +27,9 @@ import { MatPaginatorModule } from '@angular/material/paginator';
 		MatCardModule,
 		MatDividerModule,
 		MatProgressBarModule,
-		MatPaginatorModule
+		MatPaginatorModule,
+		MatSelectModule,
+		MatOptionModule
 	]
 })
 export class MaterialModule { }

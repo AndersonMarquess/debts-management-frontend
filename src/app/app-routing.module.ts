@@ -5,6 +5,7 @@ import { CreateAccountComponent } from './auth/create-account/create-account.com
 import { LoginComponent } from './auth/login/login.component';
 import { DebtListComponent } from './debt/debt-list/debt-list.component';
 import { NotFoundComponent } from './shared-components/not-found/not-found.component';
+import { DebtAddComponent } from './debt/debt-add/debt-add.component';
 
 
 const routes: Routes = [
@@ -13,6 +14,11 @@ const routes: Routes = [
 	{
 		path: 'debts/all',
 		component: DebtListComponent,
+		canActivate: [CanActivePageGuard]
+	},
+	{
+		path: 'debts/new',
+		component: DebtAddComponent,
 		canActivate: [CanActivePageGuard]
 	},
 	{ path: '**', component: NotFoundComponent }
