@@ -6,12 +6,14 @@ import { MaterialModule } from '../material/material.module';
 import { DebtAddComponent } from './debt-add/debt-add.component';
 import { DebtListComponent } from './debt-list/debt-list.component';
 import { DebtService } from './debt.service';
+import { DeleteDebtOverviewDialog } from './dialog/delete/delete-debt-overview-dialog';
 
 
 @NgModule({
 	declarations: [
 		DebtListComponent,
-		DebtAddComponent
+		DebtAddComponent,
+		DeleteDebtOverviewDialog
 	],
 	imports: [
 		CommonModule,
@@ -23,6 +25,8 @@ import { DebtService } from './debt.service';
 	exports: [
 		DebtListComponent,
 		DebtAddComponent
-	]
+	],
+	// Component de dialogo
+	entryComponents: [DeleteDebtOverviewDialog]
 })
 export class DebtModule { }

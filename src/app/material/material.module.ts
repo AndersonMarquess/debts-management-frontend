@@ -9,7 +9,8 @@ import {
 	MatInputModule,
 	MatOptionModule,
 	MatProgressBarModule,
-	MatSelectModule
+	MatSelectModule,
+	MatDialogModule
 } from "@angular/material";
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatPaginatorModule } from '@angular/material/paginator';
@@ -29,7 +30,8 @@ import { MatPaginatorModule } from '@angular/material/paginator';
 		MatProgressBarModule,
 		MatPaginatorModule,
 		MatSelectModule,
-		MatOptionModule
+		MatOptionModule,
+		MatDialogModule
 	]
 })
 export class MaterialModule { }

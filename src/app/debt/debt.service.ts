@@ -23,4 +23,8 @@ export class DebtService {
 	submitNewDebt(newDebt: NewDebt): Observable<Debt> {
 		return this.client.post<Debt>(`${ApiBaseUrl}/v1/debts`, newDebt);
 	}
+
+	deleteById(debtId: string): Observable<any> {
+		return this.client.delete(`${ApiBaseUrl}/v1/debts/${debtId}`);
+	}
 }

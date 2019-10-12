@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 import { Debt } from 'src/app/models/debt';
 import { DebtService } from '../debt.service';
+import { DeleteDebtOverviewDialog } from '../dialog/delete/delete-debt-overview-dialog';
 
 @Component({
 	templateUrl: './debt-list.component.html',
@@ -14,7 +16,7 @@ export class DebtListComponent implements OnInit {
 	size = 3;
 	totalAmountInThisMonth = 0;
 
-	constructor(private debtService: DebtService) { }
+	constructor(private debtService: DebtService, public dialog: MatDialog) { }
 
 	ngOnInit(): void {
 		this.getDebts();
@@ -42,5 +44,29 @@ export class DebtListComponent implements OnInit {
 		const debtDate = new Date(debt.dueDate);
 		const today = new Date();
 		return today.getMonth() == debtDate.getMonth() || today.getTime() >= debtDate.getTime();
+	}
+
+	openDialogForDelete(debt: Debt): void {
+		const dialogRef = this.dialog.open(DeleteDebtOverviewDialog, {
+			width: '250px',
+			data: { debt }
+		});
+
+		dialogRef.afterClosed().subscribe(result => {
+			if (result) {
+				this.deleteDebt(debt.id);
+			}
+		});
+	}
+
+	deleteDebt(debtId: string): void {
+		this.debtService.deleteById(debtId)
+			.subscribe(
+				() => {
+					this.debts = this.debts.filter(debt => debt.id != debtId);
+					this.calcTotalAmountInThisMonth();
+				},
+				err => console.log(err)
+			);
 	}
 }

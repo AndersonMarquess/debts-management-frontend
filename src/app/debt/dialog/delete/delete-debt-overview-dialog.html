@@ -1,0 +1,14 @@
+<h1 mat-dialog-title>{{debt.description}}</h1>
+
+<mat-divider></mat-divider>
+
+<div mat-dialog-content>
+	<p class="mat-body">Deseja realmente apagar a dívida:
+		<span class="mat-body-strong"> "{{debt.category}} - {{debt.amount | currency : 'BRL'}}" </span>
+	</p>
+</div>
+
+<div mat-dialog-actions>
+	<button mat-button (click)="handleCancel()">Cancelar</button>
+	<button mat-button [mat-dialog-close]="confirmDelete" cdkFocusInitial>Confirmar</button>
+</div>
