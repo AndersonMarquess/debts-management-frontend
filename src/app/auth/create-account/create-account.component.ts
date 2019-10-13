@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { MatSnackBar } from '@angular/material';
+import { Router } from '@angular/router';
 import { NewAccount } from 'src/app/models/new-account';
 import { AuthService } from '../auth.service';
 import { passwordNotEqualsValidator } from './equals-password.validator.service';
@@ -13,7 +15,8 @@ export class CreateAccountComponent implements OnInit {
 
 	createAccountForm: FormGroup;
 
-	constructor(private formBuilder: FormBuilder, private authService: AuthService) { }
+	constructor(private formBuilder: FormBuilder, private authService: AuthService, private router: Router,
+		private snackBar: MatSnackBar) { }
 
 	ngOnInit(): void {
 		this.createAccountForm = this.formBuilder.group({
@@ -48,8 +51,15 @@ export class CreateAccountComponent implements OnInit {
 		const newAccount = this.createAccountForm.getRawValue() as NewAccount;
 		this.authService.createAccount(newAccount)
 			.subscribe(
-				() => console.log('conta criada com sucesso'),
-				err => console.log(err)
+				() => {
+					this.snackBar.open('Sucesso ao criar conta', 'Fechar', { duration: 3000 });
+					this.router.navigate(['/']);
+				},
+				err => {
+					this.snackBar.open('Erro ao tentar criar conta, tente novamente mais tarde',
+						'Fechar', { duration: 3000 });
+					console.log(err);
+				}
 			);
 	}
 }

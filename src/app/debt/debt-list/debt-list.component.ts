@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { MatSnackBar } from '@angular/material';
 import { MatDialog } from '@angular/material/dialog';
 import { Debt } from 'src/app/models/debt';
 import { DebtService } from '../debt.service';
@@ -18,7 +19,7 @@ export class DebtListComponent implements OnInit {
 	size;
 	totalAmountInThisMonth;
 
-	constructor(private debtService: DebtService, public dialog: MatDialog) { }
+	constructor(private debtService: DebtService, public dialog: MatDialog, private snackBar: MatSnackBar) { }
 
 	ngOnInit(): void {
 		this.page = 0;
@@ -37,7 +38,10 @@ export class DebtListComponent implements OnInit {
 					this.isLastPage = res.last;
 					this.calcTotalAmountInThisMonth();
 				},
-				err => console.log(err)
+				err => {
+					this.snackBar.open('Falha ao tentar buscar dívidas', 'Fechar', { duration: 3000 });
+					console.log(err);
+				}
 			);
 	}
 
@@ -69,8 +73,14 @@ export class DebtListComponent implements OnInit {
 	private submitPayment(debtId: String): void {
 		this.debtService.submitPayment(debtId)
 			.subscribe(
-				() => this.ngOnInit(),
-				err => console.log(err)
+				() => {
+					this.snackBar.open('Sucesso ao confirmar pagamento da dívida', 'Fechar', { duration: 3000 });
+					this.ngOnInit();
+				},
+				err => {
+					this.snackBar.open('Erro ao tentar confirmar pagamento da dívida', 'Fechar', { duration: 3000 });
+					console.log(err);
+				}
 			);
 	}
 
@@ -91,10 +101,14 @@ export class DebtListComponent implements OnInit {
 		this.debtService.deleteById(debtId)
 			.subscribe(
 				() => {
+					this.snackBar.open('Sucesso ao apagar dívida', 'Fechar', { duration: 3000 });
 					this.debts = this.debts.filter(debt => debt.id != debtId);
 					this.calcTotalAmountInThisMonth();
 				},
-				err => console.log(err)
+				err => {
+					this.snackBar.open('Erro ao tentar apagar dívida', 'Fechar', { duration: 3000 });
+					console.log(err);
+				}
 			);
 	}
 
@@ -120,8 +134,13 @@ export class DebtListComponent implements OnInit {
 	private editDialog(debt: Debt): void {
 		this.debtService.update(debt)
 			.subscribe(
-				() => console.log('sucesso na atualização da dívida'),
-				err => console.log(err)
+				() => {
+					this.snackBar.open('Sucesso ao atualizar dívida', 'Fechar', { duration: 3000 });
+				},
+				err => {
+					this.snackBar.open('Erro ao tentar atualizar dívida', 'Fechar', { duration: 3000 });
+					console.log(err);
+				}
 			);
 	}
 

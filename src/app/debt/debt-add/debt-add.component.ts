@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { MatSnackBar } from '@angular/material';
+import { Router } from '@angular/router';
 import { NewDebt } from 'src/app/models/new-debt';
 import { DebtService } from '../debt.service';
-import { Router } from '@angular/router';
 
 @Component({
 	templateUrl: './debt-add.component.html',
@@ -15,8 +16,8 @@ export class DebtAddComponent implements OnInit {
 		'Vestuário', 'Reparos', 'Eletrônicos', 'Outros'
 	];
 
-	constructor(private formBuilder: FormBuilder, private debtService: DebtService, 
-		private router: Router) { }
+	constructor(private formBuilder: FormBuilder, private debtService: DebtService,
+		private router: Router, private snackBar: MatSnackBar) { }
 
 	ngOnInit(): void {
 		this.createDebtForm = this.formBuilder.group({
@@ -52,8 +53,14 @@ export class DebtAddComponent implements OnInit {
 		const newDebt = this.createDebtForm.getRawValue() as NewDebt;
 		this.debtService.submitNewDebt(newDebt)
 			.subscribe(
-				() => this.router.navigate(['/debts','all']),
-				err => console.log(err)
+				() => {
+					this.snackBar.open('Sucesso ao criar dívida', 'Fechar', { duration: 3000 });
+					this.router.navigate(['/debts', 'all']);
+				},
+				err => {
+					this.snackBar.open('Erro ao criar dívida', 'Fechar', { duration: 3000 });
+					console.log(err);
+				}
 			);
 	}
 }

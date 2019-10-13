@@ -14,6 +14,7 @@ import {
 } from "@angular/material";
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatSnackBarModule } from '@angular/material/snack-bar'; 
 
 
 
@@ -31,7 +32,8 @@ import { MatPaginatorModule } from '@angular/material/paginator';
 		MatPaginatorModule,
 		MatSelectModule,
 		MatOptionModule,
-		MatDialogModule
+		MatDialogModule,
+		MatSnackBarModule
 	]
 })
 export class MaterialModule { }

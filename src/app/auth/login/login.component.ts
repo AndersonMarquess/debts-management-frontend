@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { MatSnackBar } from '@angular/material';
+import { Router } from '@angular/router';
 import { AccountCredential } from 'src/app/models/account-credentials';
 import { AuthService } from '../auth.service';
-import { Router } from '@angular/router';
 
 @Component({
 	selector: 'dmf-login',
@@ -12,10 +13,9 @@ import { Router } from '@angular/router';
 export class LoginComponent implements OnInit {
 
 	loginForm: FormGroup;
-	timer;
 
 	constructor(private formBuilder: FormBuilder, private authService: AuthService,
-		private router: Router) { }
+		private router: Router, private snackBar: MatSnackBar) { }
 
 	ngOnInit(): void {
 		this.loginForm = this.formBuilder.group({
@@ -28,14 +28,15 @@ export class LoginComponent implements OnInit {
 	}
 
 	handleSubmit(): void {
-		clearTimeout(this.timer);
-		this.timer = setTimeout(() => {
-			const credentials = this.loginForm.getRawValue() as AccountCredential;
-			this.authService.authenticate(credentials)
-				.subscribe(
-					() => this.router.navigate(['/debts','all']),
-					err => console.log(err.message)
-				);
-		}, 500);
+		const credentials = this.loginForm.getRawValue() as AccountCredential;
+		this.authService.authenticate(credentials)
+			.subscribe(
+				() => this.router.navigate(['/debts', 'all']),
+				err => {
+					this.snackBar.open('Falha ao tentar fazer login, tente novamente mais tarde',
+						'Fechar', { duration: 3000 });
+					console.log(err.message);
+				}
+			);
 	}
 }
