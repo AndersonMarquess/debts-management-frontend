@@ -1,0 +1,29 @@
+@media(min-width: 450px) {
+	nav.menu {
+		transform: scale(2) !important;
+		left: 30px !important;
+		top: 30px !important;
+	}
+}
+
+nav.menu {
+	position: fixed;
+	left: 5px;
+	top: 5px;
+	transform: scale(1);
+	z-index:999;
+	transition: 1s;
+	max-height: 100px;
+}
+
+p.mat-small.user-email {
+	text-align: center;
+	max-width: 190px;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+
+a.mat-menu-item a {
+	color: #fff; 
+	text-decoration: none;
+}

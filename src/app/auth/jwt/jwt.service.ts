@@ -1,11 +1,15 @@
 import { Injectable } from '@angular/core';
 import * as jwtDecode from 'jwt-decode';
 import { PayloadJwt } from 'src/app/models/payload.jwt';
+import { BehaviorSubject } from 'rxjs';
 
 @Injectable({
 	providedIn: "root"
 })
 export class JwtService {
+
+	hasValidTokenSubject = new BehaviorSubject(false);
+
 	constructor() { }
 
 	setToken(token: string): void {
@@ -37,7 +41,9 @@ export class JwtService {
 	hasValidToken(): boolean {
 		if (this.hasToken()) {
 			const expiration = this.decodePayloadFromJwt().exp
-			return new Date().getTime() < expiration * 1000;
+			const isValid = new Date().getTime() < expiration * 1000;
+			this.hasValidTokenSubject.next(isValid);
+			return isValid;
 		}
 		return false;
 	}

@@ -1,0 +1,21 @@
+<nav class="menu">
+	<button mat-icon-button [matMenuTriggerFor]="menu">
+		<mat-icon>menu</mat-icon>
+	</button>
+	<mat-menu #menu="matMenu">
+		<p class="mat-small user-email">{{user | lowercase}}</p>
+		<mat-divider></mat-divider>
+		<a routerLink="/debts/new" class="btn-menu" mat-menu-item>
+			<mat-icon>attach_money</mat-icon>
+			<a routerLink="/debts/new">Nova dívida</a>
+		</a>
+		<a routerLink="/debts/all" class="btn-menu" mat-menu-item>
+			<mat-icon>receipt</mat-icon>
+			<a routerLink="/debts/all">Listagem de dívidas</a>
+		</a>
+		<a routerLink="/logout" class="btn-menu" mat-menu-item>
+			<mat-icon>power_settings_new</mat-icon>
+			<a routerLink="/logout">Sair</a>
+		</a>
+	</mat-menu>
+</nav>

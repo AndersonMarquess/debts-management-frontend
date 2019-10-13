@@ -15,7 +15,7 @@ import {
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSnackBarModule } from '@angular/material/snack-bar'; 
-
+import { MatMenuModule } from '@angular/material/menu';
 
 
 @NgModule({
@@ -33,7 +33,8 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
 		MatSelectModule,
 		MatOptionModule,
 		MatDialogModule,
-		MatSnackBarModule
+		MatSnackBarModule,
+		MatMenuModule
 	]
 })
 export class MaterialModule { }
