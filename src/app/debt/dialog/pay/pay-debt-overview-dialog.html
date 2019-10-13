@@ -1,0 +1,14 @@
+<h1 mat-dialog-title id="description">{{ data.debt.description }}</h1>
+
+<mat-divider></mat-divider>
+
+<div mat-dialog-content>
+	<p class="mat-body">Deseja confirmar o pagamento da dívida:
+		<span class="mat-body-strong"> "{{ data.debt.category }} - {{ data.debt.amount | currency : 'BRL' }}" </span>
+	</p>
+</div>
+
+<div mat-dialog-actions>
+	<button mat-button (click)="handleCancel()">Cancelar</button>
+	<button mat-button [mat-dialog-close]="confirmPayment" cdkFocusInitial>Confirmar</button>
+</div>

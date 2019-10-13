@@ -1,6 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from "@angular/core";
-import { ReactiveFormsModule, FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { TokenSetterModule } from '../auth/token-setter.interceptor';
 import { MaterialModule } from '../material/material.module';
 import { DebtAddComponent } from './debt-add/debt-add.component';
@@ -8,6 +8,7 @@ import { DebtListComponent } from './debt-list/debt-list.component';
 import { DebtService } from './debt.service';
 import { DeleteDebtOverviewDialog } from './dialog/delete/delete-debt-overview-dialog';
 import { EditDebtOverviewDialog } from './dialog/edit/edit-debt-overview-dialog';
+import { PayDebtOverviewDialog } from './dialog/pay/pay-debt-overview-dialog';
 
 
 @NgModule({
@@ -15,7 +16,8 @@ import { EditDebtOverviewDialog } from './dialog/edit/edit-debt-overview-dialog'
 		DebtListComponent,
 		DebtAddComponent,
 		DeleteDebtOverviewDialog,
-		EditDebtOverviewDialog
+		EditDebtOverviewDialog,
+		PayDebtOverviewDialog
 	],
 	imports: [
 		CommonModule,
@@ -32,7 +34,8 @@ import { EditDebtOverviewDialog } from './dialog/edit/edit-debt-overview-dialog'
 	// Component de dialogo
 	entryComponents: [
 		DeleteDebtOverviewDialog,
-		EditDebtOverviewDialog
+		EditDebtOverviewDialog,
+		PayDebtOverviewDialog
 	]
 })
 export class DebtModule { }

@@ -4,6 +4,7 @@ import { Debt } from 'src/app/models/debt';
 import { DebtService } from '../debt.service';
 import { DeleteDebtOverviewDialog } from '../dialog/delete/delete-debt-overview-dialog';
 import { EditDebtOverviewDialog } from '../dialog/edit/edit-debt-overview-dialog';
+import { PayDebtOverviewDialog } from '../dialog/pay/pay-debt-overview-dialog';
 
 @Component({
 	templateUrl: './debt-list.component.html',
@@ -11,15 +12,20 @@ import { EditDebtOverviewDialog } from '../dialog/edit/edit-debt-overview-dialog
 })
 export class DebtListComponent implements OnInit {
 
-	debts = new Array<Debt>();
-	isLastPage = false;
-	page = 0;
-	size = 3;
-	totalAmountInThisMonth = 0;
+	debts;
+	isLastPage;
+	page;
+	size;
+	totalAmountInThisMonth;
 
 	constructor(private debtService: DebtService, public dialog: MatDialog) { }
 
 	ngOnInit(): void {
+		this.page = 0;
+		this.size = 3;
+		this.isLastPage = false;
+		this.debts = new Array<Debt>();
+		this.totalAmountInThisMonth = 0;
 		this.getDebts();
 	}
 
@@ -47,9 +53,30 @@ export class DebtListComponent implements OnInit {
 		return today.getMonth() == debtDate.getMonth() || today.getTime() >= debtDate.getTime();
 	}
 
+	openDialogForPayment(debt: Debt): void {
+		const dialogRef = this.dialog.open(PayDebtOverviewDialog, {
+			width: '280px',
+			data: { debt }
+		});
+
+		dialogRef.afterClosed().subscribe(result => {
+			if (result) {
+				this.submitPayment(debt.id);
+			}
+		});
+	}
+
+	private submitPayment(debtId: String): void {
+		this.debtService.submitPayment(debtId)
+			.subscribe(
+				() => this.ngOnInit(),
+				err => console.log(err)
+			);
+	}
+
 	openDialogForDelete(debt: Debt): void {
 		const dialogRef = this.dialog.open(DeleteDebtOverviewDialog, {
-			width: '250px',
+			width: '280px',
 			data: { debt }
 		});
 

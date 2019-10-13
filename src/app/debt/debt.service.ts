@@ -31,4 +31,8 @@ export class DebtService {
 	update(debt: Debt): Observable<any> {
 		return this.client.put(`${ApiBaseUrl}/v1/debts`, debt);
 	}
+
+	submitPayment(debtId: String): Observable<any> {
+		return this.client.post(`${ApiBaseUrl}/v1/debts/pay/${debtId}`, null);
+	}
 }
