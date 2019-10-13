@@ -1,4 +1,5 @@
 div.container-footer {
+	margin-top: 10px;
 	background: #e91e63;
 	display: flex;
 	flex-direction: column;

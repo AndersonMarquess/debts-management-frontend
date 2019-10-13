@@ -1,4 +1,4 @@
-<div class="vertical-center">
+<div class="container">
 
 	<h2 class="mat-title">Login</h2>
 
@@ -17,7 +17,7 @@
 
 		<!-- Input de senha -->
 		<mat-form-field appearance="outline">
-			<mat-label>Password</mat-label>
+			<mat-label>Senha</mat-label>
 			<input matInput [type]="hide ? 'text' : 'password'" formControlName="password">
 			<button type="button" mat-icon-button matSuffix (click)="hide = !hide">
 				<mat-icon>{{hide ? 'visibility' : 'visibility_off'}}</mat-icon>
@@ -29,11 +29,11 @@
 
 		<!-- Botão de login -->
 		<button class="submit-form" mat-stroked-button color="primary" [disabled]="loginForm.invalid"
-			type="submit">Login</button>
+			type="submit">Entrar</button>
 		
 		<p class="mat-body" fxLayoutAlign="center">ou</p>
 		
 		<!-- Botão de criar conta -->
-		<a routerLink="/create-account" class="navigator-form" mat-stroked-button color="link">Create account</a>
+		<a routerLink="/create-account" class="navigator-form" mat-stroked-button color="link">Criar conta</a>
 	</form>
 </div>

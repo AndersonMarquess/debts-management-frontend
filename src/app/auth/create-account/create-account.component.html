@@ -1,13 +1,13 @@
-<div class="vertical-center">
+<div class="container">
 
-	<h2 class="mat-title">Create Account</h2>
+	<h2 class="mat-title">Criar Conta</h2>
 
 	<form class="ca-form" [formGroup]="createAccountForm" (ngSubmit)="handleSubmit()">
 
 		<!-- Input de nome -->
 		<mat-form-field appearance="outline">
-			<mat-label>Name</mat-label>
-			<input matInput placeholder="John Doe" formControlName="name">
+			<mat-label>Nome</mat-label>
+			<input matInput placeholder="José Maria" formControlName="name">
 			<mat-icon matSuffix>account_box</mat-icon>
 
 			<!-- Validação -->
@@ -29,7 +29,7 @@
 
 		<!-- Input de senha -->
 		<mat-form-field appearance="outline">
-			<mat-label>Password</mat-label>
+			<mat-label>Senha</mat-label>
 			<input matInput [type]="hide ? 'text' : 'password'" formControlName="password">
 			<button type="button" mat-icon-button matSuffix (click)="hide = !hide">
 				<mat-icon>{{hide ? 'visibility' : 'visibility_off'}}</mat-icon>
@@ -43,7 +43,7 @@
 
 		<!-- Input de confirmação da senha -->
 		<mat-form-field appearance="outline">
-			<mat-label>Confirm password</mat-label>
+			<mat-label>Confirmar senha</mat-label>
 			<input matInput [type]="hide ? 'text' : 'password'" formControlName="confirm">
 			<button type="button" mat-icon-button matSuffix (click)="hide = !hide">
 				<mat-icon>{{hide ? 'visibility' : 'visibility_off'}}</mat-icon>
@@ -58,9 +58,9 @@
 		<mat-error class="password-verification" *ngIf="createAccountForm.errors?.passwordNotEqualsValidator">Senhas
 			diferentes</mat-error>
 
-		<!-- Botão de Create -->
+		<!-- Botão de Criar -->
 		<button class="submit-form" mat-stroked-button color="primary" [disabled]="createAccountForm.invalid"
-			type="submit">Create</button>
+			type="submit">Criar</button>
 		
 		<p class="mat-body" fxLayoutAlign="center">ou</p>
 

@@ -11,7 +11,7 @@
 			<mat-icon matSuffix>account_box</mat-icon>
 
 			<!-- Validação -->
-			<mat-error *ngIf="createDebtForm.get('description').errors?.minlength">Mínimo 3 caracteres</mat-error>
+			<mat-error *ngIf="createDebtForm.get('description').errors?.minlength">Mínimo 5 caracteres</mat-error>
 			<mat-error *ngIf="createDebtForm.get('description').errors?.maxlength">Máximo 60 caracteres</mat-error>
 			<mat-error *ngIf="createDebtForm.get('description').errors?.required">Este campo é obrigatório</mat-error>
 		</mat-form-field>

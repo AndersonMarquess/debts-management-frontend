@@ -1,0 +1,16 @@
+div.container-not-found {
+	display: flex;
+	flex-direction: column;
+	align-content: center;
+	justify-content: center;
+	height: 100vh;
+}
+
+div.container-not-found div{ 
+	text-align: center;
+}
+
+div.container-not-found a {
+	align-self: center;
+	max-width: 120px;
+}

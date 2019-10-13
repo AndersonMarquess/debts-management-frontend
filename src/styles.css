@@ -3,43 +3,31 @@
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 
-@media(max-width:330px) {
-	.vertical-center {
-		height: unset;
-		padding-top: 30px;
-	}	
-}
-@media(min-width:330px) {
-	.vertical-center {
-		height: 100%;
-	}	
-}
-
-.vertical-center {
+div.container {
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
-	align-items: center;
+	align-content: center;
+	height: 100%;
 }
 
-.ca-form, .login-form {
-	max-width: 600px;
-	width: 75%;
-	display: flex;
-	flex-direction: column;
+div.container h2 {
+	text-align: center;
 }
 
-.ca-form > mat-form-field, .login-form > mat-form-field {
+div.container form {
+	align-self: center;
+    max-width: 600px;
+    width: 75%;
+    display: flex;
+    flex-direction: column;
+}
+
+div.container form mat-form-field {
 	width: 100%;
-	margin-bottom: 16px;
 }
 
-.ca-form > .submit-form, .login-form > .submit-form {
-	width: 130px;
-	margin: 0 auto;
-}
-
-.ca-form > .navigator-form, .login-form > .navigator-form {
-	width: 130px;
-	margin: 0 auto;
+div.container form > button, div.container form a {
+	align-self: center;
+	width: 120px;
 }

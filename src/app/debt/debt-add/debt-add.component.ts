@@ -23,7 +23,7 @@ export class DebtAddComponent implements OnInit {
 		this.createDebtForm = this.formBuilder.group({
 			description: ['', [
 				Validators.required,
-				Validators.minLength(3),
+				Validators.minLength(5),
 				Validators.maxLength(60)
 			]],
 			category: ['', [
