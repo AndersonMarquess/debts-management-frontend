@@ -7,11 +7,13 @@ import { MaterialModule } from '../material/material.module';
 import { AuthService } from './auth.service';
 import { CreateAccountComponent } from './create-account/create-account.component';
 import { LoginComponent } from './login/login.component';
+import { LogoutComponent } from './logout/logout.component';
 
 @NgModule({
 	declarations: [
 		CreateAccountComponent,
-		LoginComponent
+		LoginComponent,
+		LogoutComponent
 	],
 	imports: [
 		CommonModule,
@@ -23,7 +25,8 @@ import { LoginComponent } from './login/login.component';
 	providers: [AuthService],
 	exports: [
 		CreateAccountComponent,
-		LoginComponent
+		LoginComponent,
+		LogoutComponent
 	]
 })
 export class AuthModule { }

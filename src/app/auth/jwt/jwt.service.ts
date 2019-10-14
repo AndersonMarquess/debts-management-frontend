@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import * as jwtDecode from 'jwt-decode';
-import { PayloadJwt } from 'src/app/models/payload.jwt';
 import { BehaviorSubject } from 'rxjs';
+import { PayloadJwt } from 'src/app/models/payload.jwt';
 
 @Injectable({
 	providedIn: "root"
@@ -50,5 +50,14 @@ export class JwtService {
 
 	private decodePayloadFromJwt(): PayloadJwt {
 		return jwtDecode<PayloadJwt>(this.getToken());
+	}
+
+	deleteToken(): boolean {
+		if (this.hasToken()) {
+			localStorage.removeItem('token');
+			this.hasValidTokenSubject.next(false);
+			return true;
+		}
+		return false;
 	}
 }
