@@ -1,4 +1,4 @@
 export const environment = {
 	production: true,
-	ApiUrl: 'http://<endereço>:<porta>'
+	ApiUrl: 'https://debt-management-api.herokuapp.com'
 };

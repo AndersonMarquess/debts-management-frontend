@@ -2,7 +2,6 @@
 	div.container {
 		height: 100%;
 	}
-
 }
 
 div.container {
@@ -11,6 +10,7 @@ div.container {
 	justify-content: center;
 	align-content: center;
 	height: unset !important;
+    min-height: 100vh;
 }
 
 div.container .all-debts {

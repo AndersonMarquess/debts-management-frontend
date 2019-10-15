@@ -5,8 +5,6 @@ import { CreateAccountComponent } from './auth/create-account/create-account.com
 import { LoginComponent } from './auth/login/login.component';
 import { LogoutComponent } from './auth/logout/logout.component';
 import { NotAllowAccessAfterLoginGuard } from './auth/not-allow-access-after-login.guard';
-import { DebtAddComponent } from './debt/debt-add/debt-add.component';
-import { DebtListComponent } from './debt/debt-list/debt-list.component';
 import { NotFoundComponent } from './shared-components/not-found/not-found.component';
 
 
@@ -18,13 +16,8 @@ const routes: Routes = [
 	},
 	{ path: 'create-account', component: CreateAccountComponent },
 	{
-		path: 'debts/all',
-		component: DebtListComponent,
-		canActivate: [CanActivePageGuard]
-	},
-	{
-		path: 'debts/new',
-		component: DebtAddComponent,
+		path: 'debts',
+		loadChildren: () => import('./debt/debt.module').then(module => module.DebtModule),
 		canActivate: [CanActivePageGuard]
 	},
 	{ path: 'logout', component: LogoutComponent },
