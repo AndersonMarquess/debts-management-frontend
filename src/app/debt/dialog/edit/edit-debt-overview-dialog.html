@@ -19,16 +19,24 @@
 				pattern="^[1-9]\d*\.\d{1,2}$" required>
 			<mat-icon matSuffix>attach_money</mat-icon>
 		</mat-form-field>
+		<!-- Fixo mensal -->
+		<section class="dividaMensal">
+			<label>Dívida fixa? </label>
+			<mat-radio-group [(ngModel)]="data.debt.fixedCost">
+				<mat-radio-button [value]="true">Sim</mat-radio-button>
+				<mat-radio-button [value]="false">Não</mat-radio-button>
+			</mat-radio-group>
+		</section>
 		<!-- Prestação atual -->
 		<mat-form-field class="input-wrapper">
 			<input matInput placeholder="Prestação atual" [(ngModel)]="data.debt.currentInstallment" min="1" max="999"
-				type="number" required>
+				type="number" required [readonly]="data.debt.fixedCost">
 			<mat-icon matSuffix>trending_up</mat-icon>
 		</mat-form-field>
 		<!-- Prestações totais -->
 		<mat-form-field class="input-wrapper">
 			<input matInput placeholder="Prestações totais" [(ngModel)]="data.debt.totalInstallment"
-				[min]="data.debt.currentInstallment" max="999" type="number" required>
+				[min]="data.debt.currentInstallment" max="999" type="number" required [readonly]="data.debt.fixedCost">
 			<mat-icon matSuffix>trending_up</mat-icon>
 		</mat-form-field>
 		<!-- Vencimento -->

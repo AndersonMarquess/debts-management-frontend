@@ -10,7 +10,8 @@ import {
 	MatOptionModule,
 	MatProgressBarModule,
 	MatSelectModule,
-	MatDialogModule
+	MatDialogModule,
+	MatRadioModule
 } from "@angular/material";
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatPaginatorModule } from '@angular/material/paginator';
@@ -34,7 +35,8 @@ import { MatMenuModule } from '@angular/material/menu';
 		MatOptionModule,
 		MatDialogModule,
 		MatSnackBarModule,
-		MatMenuModule
+		MatMenuModule,
+		MatRadioModule
 	]
 })
 export class MaterialModule { }

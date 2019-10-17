@@ -36,10 +36,19 @@
 			<mat-error *ngIf="createDebtForm.get('amount').errors?.required">Este campo é obrigatório</mat-error>
 		</mat-form-field>
 
+		<section class="dividaMensal">
+			<label>Dívida mensal fixa? </label>
+			<mat-radio-group formControlName="fixedCost">
+				<mat-radio-button [value]="true">Sim</mat-radio-button>
+				<mat-radio-button [value]="false">Não</mat-radio-button>
+			</mat-radio-group>
+		</section>
+
 		<!-- Input de Prestações -->
-		<mat-form-field appearance="outline">
+		<mat-form-field appearance="outline" disabled="true">
 			<mat-label>Prestações</mat-label>
-			<input matInput type="number" formControlName="totalInstallment" step="1">
+			<input matInput type="number" formControlName="totalInstallment" step="1"
+				[readonly]="createDebtForm.get('fixedCost').value">
 
 			<!-- Validação -->
 			<mat-error *ngIf="createDebtForm.get('totalInstallment').errors?.required">

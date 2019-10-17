@@ -3,3 +3,24 @@ mat-card-content.debt-details {
 	flex-direction: column;
 	padding-top: 12px;
 }
+
+.dividaMensal {
+	margin: 14px 0;
+	padding-bottom: 5px;
+	border-bottom: 1px solid #c7c7c7;
+}
+.dividaMensal label {
+	font-size: 75%;
+    color: #c7c7c7;
+    position: relative;
+    top: -23px;
+}
+
+.dividaMensal mat-radio-group {
+	position: relative;
+    left: -70px;
+}
+
+.dividaMensal mat-radio-button:nth-child(odd) {
+	margin: 0 15px;
+}

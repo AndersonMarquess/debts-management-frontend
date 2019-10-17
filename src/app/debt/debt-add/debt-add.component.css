@@ -1,0 +1,10 @@
+.dividaMensal {
+	border: 1px solid #6e6e6e;
+	border-radius: 5px;
+	padding: 14px;
+	margin-bottom: 21px;
+}
+
+.dividaMensal mat-radio-button:nth-child(odd) {
+	margin: 0 15px;
+}

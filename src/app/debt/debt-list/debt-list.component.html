@@ -24,7 +24,10 @@
 				<div class="debt-installment">
 					<mat-icon class="icon">trending_up</mat-icon>
 					<span>Prestações: </span>
-					<p>{{debt.currentInstallment}} de {{debt.totalInstallment}}</p>
+					<p *ngIf="!debt.fixedCost; else fixed">{{debt.currentInstallment}} de {{debt.totalInstallment}}</p>
+					<ng-template #fixed>
+						<p>Dívida fixa</p>
+					</ng-template>
 				</div>
 				<div class="debt-due-date">
 					<mat-icon class="icon">date_range</mat-icon>
@@ -65,7 +68,8 @@
 	</div>
 
 	<div class="load-more">
-		<button mat-stroked-button color="primary" *ngIf="!isLastPage; else fim" (click)="getDebts()">Carregar mais</button>
+		<button mat-stroked-button color="primary" *ngIf="!isLastPage; else fim" (click)="getDebts()">Carregar
+			mais</button>
 		<ng-template #fim>
 			<p class="mat-small">Fim da listagem</p>
 		</ng-template>

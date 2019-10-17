@@ -4,5 +4,6 @@ export interface NewDebt {
 	amount: number,
 	totalInstallment: number,
 	dueDate: number,
-	totalAmount: number
+	totalAmount: number,
+	fixedCost: boolean
 }

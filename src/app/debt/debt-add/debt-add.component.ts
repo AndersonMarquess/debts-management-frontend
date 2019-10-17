@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators, FormControl } from '@angular/forms';
 import { MatSnackBar } from '@angular/material';
 import { Router } from '@angular/router';
 import { NewDebt } from 'src/app/models/new-debt';
@@ -32,6 +32,7 @@ export class DebtAddComponent implements OnInit {
 			amount: ['', [
 				Validators.required
 			]],
+			fixedCost: new FormControl(false),
 			totalInstallment: [1, [
 				Validators.required,
 				Validators.min(1),
