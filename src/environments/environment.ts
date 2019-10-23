@@ -4,7 +4,8 @@
 
 export const environment = {
 	production: false,
-	ApiUrl: 'http://localhost:8080'
+	ApiUrl: 'https://debt-management-api.herokuapp.com'
+	//ApiUrl: 'http://localhost:8080'
 };
 
 /*

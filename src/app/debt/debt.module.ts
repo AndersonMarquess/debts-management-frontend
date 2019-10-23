@@ -3,6 +3,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from "@angular/core";
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { TokenSetterModule } from '../auth/token-setter.interceptor';
+import { ChartModule } from '../chart/chart.module';
 import { MaterialModule } from '../material/material.module';
 import { DebtAddComponent } from './debt-add/debt-add.component';
 import { DebtListComponent } from './debt-list/debt-list.component';
@@ -28,7 +29,8 @@ import { PayDebtOverviewDialog } from './dialog/pay/pay-debt-overview-dialog';
 		FormsModule,
 		TokenSetterModule,
 		DebtRoutingModule,
-		HttpClientModule
+		HttpClientModule,
+		ChartModule
 	],
 	providers: [DebtService],
 	// Componentes do dialog

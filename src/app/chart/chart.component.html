@@ -1,0 +1,4 @@
+<div class="container chart-wrapper" *ngIf="dataLoaded">
+	<canvas baseChart width="270" height="380" [data]="doughnutChartData" [labels]="doughnutChartLabels"
+		[chartType]="doughnutChartType"></canvas>
+</div>

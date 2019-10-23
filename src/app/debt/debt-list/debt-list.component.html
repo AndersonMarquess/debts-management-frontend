@@ -2,6 +2,8 @@
 	<h2 class="mat-title">Listagem de dívidas</h2>
 
 	<div class="all-debts">
+		<dmf-chart [debts]="debts" *ngIf="showChart"></dmf-chart>
+
 		<div class="place-holder" *ngIf="debts.length <= 0">
 			<p class="place-holder-msg">Nenhuma dívida cadastrada, vá ao menu para criar uma nova dívida.</p>
 		</div>

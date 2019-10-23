@@ -18,6 +18,7 @@ export class DebtListComponent implements OnInit {
 	page;
 	size;
 	totalAmountInThisMonth;
+	showChart = false;
 
 	constructor(private debtService: DebtService, public dialog: MatDialog, private snackBar: MatSnackBar) { }
 
@@ -46,15 +47,13 @@ export class DebtListComponent implements OnInit {
 	}
 
 	calcTotalAmountInThisMonth(): void {
+		this.showChart = false;
 		this.totalAmountInThisMonth = this.debts
-			.filter(this.isDebtBeforeOrEqualsThisMonth)
-			.reduce((sigma, currentValue) => sigma + currentValue.amount, 0)
-	}
-
-	isDebtBeforeOrEqualsThisMonth(debt: Debt): boolean {
-		const debtDate = new Date(debt.dueDate);
-		const today = new Date();
-		return today.getMonth() == debtDate.getMonth() || today.getTime() >= debtDate.getTime();
+			.filter(d => this.debtService.isDebtBeforeOrEqualsThisMonth(d))
+			.reduce((sigma, currentValue) => sigma + currentValue.amount, 0);
+		setTimeout(() => {
+			this.showChart = true;
+		}, 100);
 	}
 
 	openDialogForPayment(debt: Debt): void {

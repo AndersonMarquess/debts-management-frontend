@@ -35,4 +35,10 @@ export class DebtService {
 	submitPayment(debtId: String): Observable<any> {
 		return this.client.post(`${ApiBaseUrl}/v1/debts/pay/${debtId}`, null);
 	}
+
+	isDebtBeforeOrEqualsThisMonth(debt: Debt): boolean {
+		const debtDate = new Date(debt.dueDate);
+		const today = new Date();
+		return today.getMonth() == debtDate.getMonth() || today.getTime() >= debtDate.getTime();
+	}
 }

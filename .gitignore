@@ -44,3 +44,10 @@ testem.log
 # System Files
 .DS_Store
 Thumbs.db
+
+# outros
+Gif/
+.firebase/
+.firebaserc
+firebase.json
+src/favicon.png
